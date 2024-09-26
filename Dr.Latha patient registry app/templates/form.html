@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Data Submission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Data Submission</h1>
+        <form action="{{ url_for('submit') }}" method="POST">
+            <label for="patient_name">Name:</label>
+            <input type="text" name="patient_name" required><br>
+
+            <label for="patient_sex">Sex:</label>
+            <select name="patient_sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br>
+
+            <label for="patient_dob">Date of Birth:</label>
+            <input type="date" name="patient_dob" required><br>
+
+            <label for="contact">Contacts:</label>
+            <input type="text" name="contact" required><br>
+
+            <label for="attending">Attending:</label>
+            <select name = 'attending' required>
+                <option value="NA"> NA</option>
+                <option value = 'parent'> parent</option>
+                <option value="grandparent"> grandparent</option>
+                <option value="sibling"> sibling</option>
+                <option value="relative"> relative</option>
+                <option value="other"> other</option>
+            <!-- <input type="text" name="attending" required> -->
+            </select><br> 
+
+            <label for="blood_group">Blood Group:</label>
+            <select name="blood_group" required>
+                <option value="Unknown">Unknown</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="AB+">AB+</option>
+                <option value="O+">O+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB-">AB-</option>
+                <option value="O-">O-</option>
+            </select><br>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" name="height" required><br>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" name="weight" required><br>
+
+            <label for="consultation">Consultation:</label>
+            <select name="consultation" required>
+                <option value="Treatment">Treatment</option>
+                <option value="Vaccinations">Vaccinations</option>
+            </select><br>
+
+            <label for="vaccine">Vaccine:</label>
+            <select name="vaccine" required>
+                <option value="NA">NA</option>
+                <option value="AVAXIM">AVAXIM</option>
+                <option value="BOOSTRIX">BOOSTRIX</option>
+                <option value="BIOVAC A">BIOVAC A</option>
+                <option value="BCG(TUBERVAC)">BCG(TUBERVAC)</option>
+                <option value="CERVAVAC">CERVAVAC</option>
+                <option value="EASY SIX">EASY SIX</option>
+                <option value="FLU QUADRI">FLU QUADRI</option>
+                <option value="FLUVARIX TETRA">FLUVARIX TETRA</option>
+                <option value="GARDASIL">GARDASIL</option>
+                <option value="GENEVAC B">GENEVAC B</option>
+                <option value="HEXASIL">HEXASIL</option>
+                <option value="HEXAXIM">HEXAXIM</option>
+                <option value="INFLUVAC TETRA">INFLUVAC TETRA</option>
+                <option value="INFANRIX НЕХА">INFANRIX НЕХА</option>
+                <option value="JE SHIELD">JE SHIELD</option>
+                <option value="JEEV 3">JEEV 3</option>
+                <option value="MMR">MMR</option>
+                <option value="MENACTRA">MENACTRA</option>
+                <option value="MENVEO">MENVEO</option>
+                <option value="PCV 13">PCV 13</option>
+                <option value="PNEUMOSIL">PNEUMOSIL</option>
+                <option value="PENTAXIM">PENTAXIM</option>
+                <option value="PNEUBEVAX 14">PNEUBEVAX 14</option>
+                <option value="ROTASIL">ROTASIL</option>
+                <option value="RABI SHIELD">RABI SHIELD</option>
+                <option value="RABIVAX">RABIVAX</option>
+                <option value="ROTATEQ">ROTATEQ</option>
+                <option value="ROTASURE">ROTASURE</option>
+                <option value="SYNFLORIX">SYNFLORIX</option>
+                <option value="TETRAXIM">TETRAXIM</option>
+                <option value="TYPHIBEV">TYPHIBEV</option>
+                <option value="VARIPED">VARIPED</option>
+            </select><br>
+
+            <label for="applied_doses">Doses:</label><br>
+            <input type="checkbox" name="applied_doses" value="First Dose"> First Dose<br>
+            <input type="checkbox" name="applied_doses" value="Second Dose"> Second Dose<br>
+            <input type="checkbox" name="applied_doses" value="Third Dose"> Third Dose<br>
+            <input type="checkbox" name="applied_doses" value="Fourth Dose"> Fourth Dose<br>
+            <input type="checkbox" name="applied_doses" value="Booster"> Booster<br>
+
+            <label for="notes">Notes:</label><br>
+            <textarea name="notes" rows="4" cols="50" placeholder="Enter any additional notes here..."></textarea><br> 
+
+            <input type="submit" value="Submit">
+        </form>
+        
+        <button type="button" onclick="window.location.href='{{ url_for('show_data') }}'">View Data Table</button>
+    </div>
+</body>
+</html>

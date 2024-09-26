@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Data</h1>
+
+        <button type="button" onclick="window.location.href='{{ url_for('index') }}'">Submit New Patient Data</button>
+
+        <p><strong>Number of Patients:</strong> {{ summary.unique_index_codes }}</p>
+
+        <form action="{{ url_for('show_data') }}" method="POST">
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date" required>
+            
+            <label for="end_date">End Date:</label>
+            <input type="date" name="end_date" required>
+            
+            <input type="submit" value="Filter by Date">
+        </form>
+        
+        <form action="{{ url_for('show_data') }}" method="POST">
+            <label for="blood_group">Blood Group:</label>
+            <select name="blood_group">
+                <option value="">All</option>
+                <option value="Unknown">Unknown</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="AB+">AB+</option>
+                <option value="O+">O+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB-">AB-</option>
+                <option value="O-">O-</option>
+            </select>
+            
+            <input type="submit" value="Filter by Blood Group">
+        </form>
+
+        <form action="{{ url_for('show_data') }}" method="POST">
+            <input type="text" name="search" placeholder="Search...">
+            <input type="submit" value="Search">
+        </form>
+        
+        <table>
+            <tr>
+                <th>Index Code</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Contact</th>
+                <th>Attending</th>
+                <th>Blood Group</th>
+                <th>Height (cm)</th>
+                <th>Weight (kg)</th>
+                <th>Consultation</th>
+                <th>Vaccine</th>  
+                <th>Applied Doses</th>
+                <th>Notes</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.index_code }}</td>
+                <td>{{ patient.patient_name }}</td>
+                <td>{{ patient.patient_dob }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.patient_sex }}</td>
+                <td>{{ patient.contact }}</td>
+                <td>{{ patient.attending }}</td>
+                <td>{{ patient.blood_group }}</td>
+                <td>{{ patient.height }}</td>
+                <td>{{ patient.weight }}</td>
+                <td>{{ patient.consultation }}</td>
+                <td>{{ patient.vaccine }}</td>  
+                <td>{{ patient.applied_doses | join(', ') }}</td>
+                <td>{{ patient.notes }}</td>
+                <td>{{ patient.date }}</td>
+                <td>{{ patient.time }}</td>
+                <td>
+                    <form action="{{ url_for('delete_patient', patient_id=patient._id) }}" method="POST" style="display:inline;">
+                        <button type="submit" title="Delete"><i class="fas fa-trash-alt">drop</i></button>
+                    </form>
+                    <form action="{{ url_for('update_patient', patient_id=patient._id) }}" method="GET" style="display:inline;">
+                        <button type="submit" title="Update"><i class="fas fa-edit">edit</i></button>
+                    </form>
+                    <form action="{{ url_for('view_patient', patient_id=patient._id) }}" method="GET" style="display:inline;">
+                        <button type="submit" title="View"><i class="fas fa-eye" >view</i></button>
+                    </form>
+                    <form action="{{ url_for('copy_patient', patient_id=patient._id) }}" method="POST" style="display:inline;">
+                        <button type="submit" title="Copy"> <i class="fas fa-copy">copy</i></button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+
+
+
+

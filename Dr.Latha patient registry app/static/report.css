@@ -1,0 +1,55 @@
+/* report.css */
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f5d5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #da1212;
+    margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p {
+    font-size: 16px;
+    line-height: 1;
+    color: #333;
+}
+
+/* Strong Text */
+strong {
+    color: #f08c00;
+}
+
+/* Button Styles */
+button {
+    background-color: #c6da20;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto 0;
+}
+
+button:hover {
+    background-color: #a9b91a;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Patient Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+
+</head>
+<body>
+    <h1>Update Patient Data</h1>
+    <form action="{{ url_for('update_patient', patient_id=patient._id) }}" method="POST">
+        <label for="index_code">Index Code:</label>
+        <input type="text" name="index_code" value="{{ patient.index_code }}" required readonly><br>
+
+        <label for="patient_name">Name:</label>
+        <input type="text" name="patient_name" value="{{ patient.patient_name }}" required><br>
+
+        <label for="patient_dob">Date of Birth:</label>
+        <input type="date" name="patient_dob" value="{{ patient.patient_dob }}" required><br>
+
+        <label for="patient_sex">Sex:</label>
+        <select name="patient_sex" required>
+            <option value="male" {% if patient.patient_sex == 'male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if patient.patient_sex == 'female' %}selected{% endif %}>Female</option>
+            <option value="other" {% if patient.patient_sex == 'other' %}selected{% endif %}>Other</option>
+        </select><br>
+
+        <label for="contact">Contact Number:</label>
+        <input type="text" name="contact" value="{{ patient.contact }}" required><br>
+
+        <label for="attending">Attending:</label>
+        <select name="attending" required>
+            <option value="NA" {% if patient.attending == 'NA' %}selected{% endif %}>NA</option>
+            <option value="parent" {% if patient.attending == 'parent' %}selected{% endif %}>parent</option>
+            <option value="grandparent" {% if patient.attending == 'grandparent' %}selected{% endif %}>grandparent</option>
+            <option value="sibling" {% if patient.attending == 'sibling' %}selected{% endif %}>sibling</option>
+            <option value="relative" {% if patient.attending == 'relative' %}selected{% endif %}>relative</option>
+            <option value="other" {% if patient.attending == 'other' %}selected{% endif %}>other</option>
+        </select>
+        <!-- <input type="text" name="attending" value="{{ patient.attending }}"><br> -->
+
+        <label for="blood_group">Blood Group:</label>
+        <select name="blood_group" required>
+            <option value="Unknown" {% if patient.blood_group == 'Unknown' %}selected{% endif %}>Unknown</option>
+            <option value="A+" {% if patient.blood_group == 'A+' %}selected{% endif %}>A+</option>
+            <option value="B+" {% if patient.blood_group == 'B+' %}selected{% endif %}>B+</option>
+            <option value="AB+" {% if patient.blood_group == 'AB+' %}selected{% endif %}>AB+</option>
+            <option value="O+" {% if patient.blood_group == 'O+' %}selected{% endif %}>O+</option>
+            <option value="A-" {% if patient.blood_group == 'A-' %}selected{% endif %}>A-</option>
+            <option value="B-" {% if patient.blood_group == 'B-' %}selected{% endif %}>B-</option>
+            <option value="AB-" {% if patient.blood_group == 'AB-' %}selected{% endif %}>AB-</option>
+            <option value="O-" {% if patient.blood_group == 'O-' %}selected{% endif %}>O-</option>
+        </select><br>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" name="height" value="{{ patient.height }}" required><br>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" name="weight" value="{{ patient.weight }}" required><br>
+
+        <label for="consultation">Consultation:</label>
+        <select name="consultation" required>
+            <option value="Treatment" {% if patient.consultation == 'Treatment' %}selected{% endif %}>Treatment</option>
+            <option value="Vaccinations" {% if patient.consultation == 'Vaccinations' %}selected{% endif %}>Vaccinations</option>
+        </select><br>
+
+        <label for="vaccine">Vaccine:</label>
+        <select name="vaccine" required>
+            <option value="NA" {% if patient.vaccine == 'NA' %}selected{% endif %}>NA</option>
+            <option value="AVAXIM" {% if patient.vaccine == 'AVAXIM' %}selected{% endif %}>AVAXIM</option>
+            <option value="BOOSTRIX" {% if patient.vaccine == 'BOOSTRIX' %}selected{% endif %}>BOOSTRIX</option>
+            <option value="BIOVAC A" {% if patient.vaccine == 'BIOVAC A' %}selected{% endif %}>BIOVAC A</option>
+            <option value="BCG(TUBERVAC)" {% if patient.vaccine == 'BCG(TUBERVAC)' %}selected{% endif %}>BCG(TUBERVAC)</option>
+            <option value="CERVAVAC" {% if patient.vaccine == 'CERVAVAC' %}selected{% endif %}>CERVAVAC</option>
+            <option value="EASY SIX" {% if patient.vaccine == 'EASY SIX' %}selected{% endif %}>EASY SIX</option>
+            <option value="FLU QUADRI" {% if patient.vaccine == 'FLU QUADRI' %}selected{% endif %}>FLU QUADRI</option>
+            <option value="FLUVARIX TETRA" {% if patient.vaccine == 'FLUVARIX TETRA' %}selected{% endif %}>FLUVARIX TETRA</option>
+            <option value="GARDASIL" {% if patient.vaccine == 'GARDASIL' %}selected{% endif %}>GARDASIL</option>
+            <option value="GENEVAC B" {% if patient.vaccine == 'GENEVAC B' %}selected{% endif %}>GENEVAC B</option>
+            <option value="HEXASIL" {% if patient.vaccine == 'HEXASIL' %}selected{% endif %}>HEXASIL</option>
+            <option value="HEXAXIM" {% if patient.vaccine == 'HEXAXIM' %}selected{% endif %}>HEXAXIM</option>
+            <option value="INFLUVAC TETRA" {% if patient.vaccine == 'INFLUVAC TETRA' %}selected{% endif %}>INFLUVAC TETRA</option>
+            <option value="INFANRIX НЕХА" {% if patient.vaccine == 'INFANRIX НЕХА' %}selected{% endif %}>INFANRIX НЕХА</option>
+            <option value="JE SHIELD" {% if patient.vaccine == 'JE SHIELD' %}selected{% endif %}>JE SHIELD</option>
+            <option value="JEEV 3" {% if patient.vaccine == 'JEEV 3' %}selected{% endif %}>JEEV 3</option>
+            <option value="MMR" {% if patient.vaccine == 'MMR' %}selected{% endif %}>MMR</option>
+            <option value="MENACTRA" {% if patient.vaccine == 'MENACTRA' %}selected{% endif %}>MENACTRA</option>
+            <option value="MENVEO" {% if patient.vaccine == 'MENVEO' %}selected{% endif %}>MENVEO</option>
+            <option value="PCV 13" {% if patient.vaccine == 'PCV 13' %}selected{% endif %}>PCV 13</option>
+            <option value="PNEUMOSIL" {% if patient.vaccine == 'PNEUMOSIL' %}selected{% endif %}>PNEUMOSIL</option>
+            <option value="PENTAXIM" {% if patient.vaccine == 'PENTAXIM' %}selected{% endif %}>PENTAXIM</option>
+            <option value="PNEUBEVAX 14" {% if patient.vaccine == 'PNEUBEVAX 14' %}selected{% endif %}>PNEUBEVAX 14</option>
+            <option value="ROTASIL" {% if patient.vaccine == 'ROTASIL' %}selected{% endif %}>ROTASIL</option>
+            <option value="RABI SHIELD" {% if patient.vaccine == 'RABI SHIELD' %}selected{% endif %}>RABI SHIELD</option>
+            <option value="RABIVAX" {% if patient.vaccine == 'RABIVAX' %}selected{% endif %}>RABIVAX</option>
+            <option value="ROTATEQ" {% if patient.vaccine == 'ROTATEQ' %}selected{% endif %}>ROTATEQ</option>
+            <option value="ROTASURE" {% if patient.vaccine == 'ROTASURE' %}selected{% endif %}>ROTASURE</option>
+            <option value="SYNFLORIX" {% if patient.vaccine == 'SYNFLORIX' %}selected{% endif %}>SYNFLORIX</option>
+            <option value="TETRAXIM" {% if patient.vaccine == 'TETRAXIM' %}selected{% endif %}>TETRAXIM</option>
+            <option value="TYPHIBEV" {% if patient.vaccine == 'TYPHIBEV' %}selected{% endif %}>TYPHIBEV</option>
+            <option value="VARIPED" {% if patient.vaccine == 'VARIPED' %}selected{% endif %}>VARIPED</option>
+        </select><br>
+
+        <label for="applied_doses">Applied Doses:</label><br>
+        <input type="checkbox" name="applied_doses" value="First Dose" {% if 'First Dose' in patient.applied_doses %}checked{% endif %}> First Dose<br>
+        <input type="checkbox" name="applied_doses" value="Second Dose" {% if 'Second Dose' in patient.applied_doses %}checked{% endif %}> Second Dose<br>
+        <input type="checkbox" name="applied_doses" value="Third Dose" {% if 'Third Dose' in patient.applied_doses %}checked{% endif %}> Third Dose<br>
+        <input type="checkbox" name="applied_doses" value="Fourth Dose" {% if 'Fourth Dose' in patient.applied_doses %}checked{% endif %}> Fourth Dose<br>
+        <input type="checkbox" name="applied_doses" value="Booster" {% if 'Booster' in patient.applied_doses %}checked{% endif %}> Booster<br>
+
+        <label for="notes">Notes:</label><br>
+        <textarea name="notes" rows="4" cols="50">{{ patient.notes }}</textarea><br>
+
+        <input type="submit" value="Update">
+    </form>
+    
+    <button type="button" onclick="window.location.href='{{ url_for('show_data') }}'">Back To Patient List</button>
+</body>
+</html>
+
+

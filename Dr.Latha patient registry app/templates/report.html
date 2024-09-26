@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Report</h1>
+        <p><strong>Index Code:</strong> {{ patient.index_code }}</p>
+        <p><strong>Name:</strong> {{ patient.patient_name }}</p>
+        <p><strong>Date of Birth:</strong> {{ patient.patient_dob }}</p>
+        <p><strong>Age:</strong> {{ patient.age }}</p>
+        <p><strong>Sex:</strong> {{ patient.patient_sex }}</p>
+        <p><strong>Contact:</strong> {{ patient.contact }}</p>
+        <p><strong>Attending:</strong> {{ patient.attending }}</p>
+        <p><strong>Blood Group:</strong> {{ patient.blood_group }}</p>
+        <p><strong>Height:</strong> {{ patient.height }} cm</p>
+        <p><strong>Weight:</strong> {{ patient.weight }} kg</p>
+        <p><strong>Consultation:</strong> {{ patient.consultation }}</p>
+        <p><strong>Vaccine:</strong> {{ patient.vaccine }}</p>
+        <p><strong>Applied Doses:</strong> {{ patient.applied_doses | join(', ') }}</p>
+        <p><strong>Notes:</strong> {{ patient.notes }}</p>
+        <p><strong>Date:</strong> {{ patient.date }}</p>
+        <p><strong>Time:</strong> {{ patient.time }}</p>
+
+        <button type="button" onclick="window.location.href='{{ url_for('show_data') }}'">Back To Patient List</button>
+    </div>
+</body>
+</html>
+
+
+

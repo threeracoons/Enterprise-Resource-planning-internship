@@ -1,0 +1,131 @@
+/* table.css */
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f5d5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #da1212;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button, input[type="submit"] {
+    background-color:  #a9b91a;
+    color:  white;
+    border: tomato;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+    margin: 0;
+}
+
+button:hover, input[type="submit"]:hover {
+    color: #a9b91a;
+}
+
+/* Icons */
+button i {
+    font-size: 15px;
+}
+
+
+/* Forms */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #f08c00;
+    margin-bottom: 5px;
+}
+
+input[type="date"], input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    table-layout: fixed; /* Ensures the table adapts to the container width */
+}
+
+th, td {
+    padding: 8px 5px; /* Reduced padding for a more compact table */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* Enables word wrapping in table cells */
+}
+
+th {
+    background-color: #f08c00;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Table Container */
+.table-container {
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    input[type="date"], input[type="text"], select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button, input[type="submit"] {
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px; /* Reduced font size for smaller screens */
+    }
+
+    th, td {
+        padding: 5px; /* Further reduced padding for smaller screens */
+    }
+}
